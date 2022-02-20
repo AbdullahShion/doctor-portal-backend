@@ -1,19 +1,19 @@
 [
     {
         "id" : 1,
-        "subject" : "Teeth Orthodontics",
+        "subject" : "Heart Specialist",
         "visitingHour" : "8:00 AM - 9:00 AM",
         "totalSpace" : 10
     },
     {
         "id" : 2,
-        "subject" : "Cosmetic Dentistry",
+        "subject" : "Medicine Consultant",
         "visitingHour" : "10:50 AM - 11:30 AM",
         "totalSpace" : 10
     },
     {
         "id" : 3,
-        "subject" : "Teeth Cleaning",
+        "subject" : "Gynecologist",
         "visitingHour" : "5:00 PM - 6:00 PM",
         "totalSpace" : 10
     },
@@ -25,13 +25,13 @@
     },
     {
         "id" : 5,
-        "subject" : "Teeth Orthodontics",
+        "subject" : "Junior Consultant",
         "visitingHour" : "8:00 AM - 9:00 AM" , 
         "totalSpace" : 10
     },
     {
         "id" : 6,
-        "subject" : "Teeth Orthodontics",
+        "subject" : "Senior Consultant",
         "visitingHour" : "8:00 AM - 9:00 AM" , 
         "totalSpace" : 10
     }
