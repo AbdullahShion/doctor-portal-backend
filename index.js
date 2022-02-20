@@ -8,10 +8,8 @@ require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(BodyParser.json())
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.g58tf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-
-
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = "mongodb+srv://shion15:ByqdoBhPs3pJCMdB@cluster0.vjtll.mongodb.net/doctorsDb?retryWrites=true&w=majority";
+let client = new MongoClient(uri, {useNewUrlParser : true ,  useUnifiedTopology: true });
 
 /************************ 
     Routes -- Get method 
@@ -24,20 +22,20 @@ app.get('/' , (req,res) => res.send("Welcome to Doctors Portal  Backed"))
 app.get('/appointments', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
     client.connect(conErr => {
-        const collection = client.db('doctorsportal').collection('appointments');
+        const collection = client.db('doctorsDb').collection('appointments');
         collection.find().toArray((err , documents) => {
             err ? res.status(500).send(err) : res.send(documents)
         })
     })
     client.close();
-  
+
 })
 
 // Get all Booked Appointments 
 app.get('/bookedAppointments', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
     client.connect(conErr => {
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.find().toArray((err , documents) => {
             err ? res.status(500).send(err) : res.send(documents)
         })
@@ -56,7 +54,7 @@ app.post('/makeBooking' , (req,res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
     client.connect(conErr => {
         console.log(conErr);
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.insertOne(data, (err , result) => {
             err ? res.status(500).send({message : err}) : res.send(result.ops[0])
             console.log(err);
@@ -73,7 +71,7 @@ app.post('/updateBookingStatus', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
@@ -101,7 +99,7 @@ app.post('/updatePrescription', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
@@ -129,7 +127,7 @@ app.post('/updateVisitingStatus', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
@@ -160,7 +158,7 @@ app.post('/updateAppointmentTime', (req, res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
 
     client.connect(err => {
-        const collection = client.db('doctorsportal').collection('bookedAppointments');
+        const collection = client.db('doctorsDb').collection('bookedAppointments');
         collection.updateOne(
             { _id:ObjectId(ap.id) }, 
             {
@@ -190,17 +188,16 @@ app.post('/insertAppointment' , (req,res) => {
     client = new MongoClient(uri, {useNewUrlParser : true,  useUnifiedTopology: true });
     client.connect(conErr => {
         console.log(conErr);
-        const collection = client.db('doctorsportal').collection('appointments');
+        const collection = client.db('doctorsDb').collection('appointments');
         collection.insertOne(data, (err , result) => {
             err ? res.status(500).send({message : err}) : res.send(result.ops[0])
             console.log(err);
         })
     client.close();
-
     })
 })
 */
 
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8085;
 app.listen(port, err => err ? console.log("Filed to Listen on Port" , port) : console.log("Listing for Port" , port));
