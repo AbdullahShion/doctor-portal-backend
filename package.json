@@ -1,22 +1,22 @@
 {
-  "name": "doctors-portal-backend",
+  "name": "doctor-portal-backend",
   "version": "1.0.0",
-  "description": "\"Backend for Doctors Portal Project\"",
+  "description": "\"Backend for Doctor Portal Project\"",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "start-dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "\"\"",
-  "license": "ISC",
+  "author": "\"Mohammad Abdullah\"",
+  "license": "",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dot-env": "0.0.1",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mongodb": "^3.5.5",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1",
     "nodemon": "^2.0.2"
   }
 }
